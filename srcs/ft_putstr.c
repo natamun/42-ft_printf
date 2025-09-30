@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 16:58:14 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 19:25:56 by nmunari          ###   ########.fr       */
+/*   Created: 2025/09/30 19:05:20 by nmunari           #+#    #+#             */
+/*   Updated: 2025/09/30 19:25:47 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-
-int		ft_printf(const char *str, ...);
-ssize_t	ft_putchar(char c);
-ssize_t	ft_putstr(char *str);
-size_t	ft_strlen(const char *s);
-
-#endif
+ssize_t	ft_putstr(char *str)
+{
+	if (!str)
+		return (write(1, "(null)", 6));
+	return (write(1, str, ft_strlen(str)));
+}

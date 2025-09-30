@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 16:58:14 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 19:25:56 by nmunari          ###   ########.fr       */
+/*   Created: 2025/09/30 19:06:54 by nmunari           #+#    #+#             */
+/*   Updated: 2025/09/30 19:25:51 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-int		ft_printf(const char *str, ...);
-ssize_t	ft_putchar(char c);
-ssize_t	ft_putstr(char *str);
-size_t	ft_strlen(const char *s);
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

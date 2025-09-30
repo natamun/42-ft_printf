@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:07:09 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 19:01:57 by nmunari          ###   ########.fr       */
+/*   Updated: 2025/09/30 19:25:55 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	arg_print(const char type, va_list ap)
 	if (type == 'c')
 		return (ft_putchar(va_arg(ap, int)));
 	if (type == 's')
-		return (ft_putchar(va_arg(ap, int)));
+		return (ft_putstr(va_arg(ap, char *)));
 	if (type == 'p')
 		return (ft_putchar(va_arg(ap, int)));
 	if (type == 'd')
@@ -41,6 +41,8 @@ int	ft_printf(const char *str, ...)
 	int		i;
 	va_list	ap;
 
+	if (!str)
+		return (0);
 	i = 0;
 	len = 0;
 	va_start(ap, str);
@@ -54,5 +56,6 @@ int	ft_printf(const char *str, ...)
 		else
 			len += ft_putchar(str[i++]);
 	}
+	va_end(ap);
 	return (len);
 }
