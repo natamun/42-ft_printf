@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 16:58:14 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 20:34:48 by nmunari          ###   ########.fr       */
+/*   Created: 2025/09/30 19:32:31 by nmunari           #+#    #+#             */
+/*   Updated: 2025/09/30 20:34:45 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-
-int		ft_printf(const char *str, ...);
-ssize_t	ft_putchar(char c);
-ssize_t	ft_putstr(char *str);
-size_t	ft_strlen(const char *s);
-ssize_t	puthexa(unsigned long n, int up_case);
-ssize_t	ft_putptr(void *ptr);
-
-#endif
+ssize_t	ft_putptr(void *ptr)
+{
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	return (write(1, "0x", 2) + puthexa((unsigned long) ptr, 0));
+}
