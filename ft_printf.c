@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:07:09 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 20:34:46 by nmunari          ###   ########.fr       */
+/*   Updated: 2025/09/30 21:06:16 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ static int	arg_print(const char type, va_list ap)
 		return (ft_putstr(va_arg(ap, char *)));
 	if (type == 'p')
 		return (ft_putptr(va_arg(ap, void *)));
-	if (type == 'd')
-		return (ft_putchar(va_arg(ap, int)));
-	if (type == 'i')
-		return (ft_putchar(va_arg(ap, int)));
+	if (type == 'd' || type == 'i')
+		return (ft_putnbr((long) va_arg(ap, int)));
 	if (type == 'u')
 		return (ft_putchar(va_arg(ap, int)));
 	if (type == 'x')

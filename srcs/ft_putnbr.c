@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 16:58:14 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 21:06:18 by nmunari          ###   ########.fr       */
+/*   Created: 2025/09/30 20:47:38 by nmunari           #+#    #+#             */
+/*   Updated: 2025/09/30 21:06:20 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+ssize_t	ft_putnbr(long n)
+{
+	char	buffer[12];
+	int		is_neg;
+	int		i;
 
-int		ft_printf(const char *str, ...);
-ssize_t	ft_putchar(char c);
-ssize_t	ft_putstr(char *str);
-size_t	ft_strlen(const char *s);
-ssize_t	puthexa(unsigned long n, int up_case);
-ssize_t	ft_putptr(void *ptr);
-ssize_t	ft_putnbr(long n);
-
-#endif
+	if (n == 0)
+		return (write(1, "0", 1));
+	buffer[11] = '\0';
+	is_neg = 0;
+	i = 10;
+	if (n < 0)
+	{
+		is_neg = 1;
+		n = n * -1;
+	}
+	while (n)
+	{
+		buffer[i--] = n % 10 + '0';
+		n = n / 10;
+	}
+	if (is_neg)
+		buffer[i--] = '-';
+	return (write(1, &buffer[i + 1], (10 - i)));
+}
