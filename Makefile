@@ -30,4 +30,8 @@ fclean: clean
 
 re: fclean all
 
+test: re
+	cc test/main.c $(NAME) -o test_exec
+	./test_exec
+
 .PHONY: all clean fclean re
